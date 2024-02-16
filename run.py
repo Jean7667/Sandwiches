@@ -42,7 +42,8 @@ def get_sales_data():
         if validate_data(sales_data):
             print ("Data is valid")
             break
-
+        
+    return sales_data
 
 def validate_data(values):
     """
@@ -65,8 +66,17 @@ def validate_data(values):
 #e shorthand error python - review
 # data type input always a str ''        
 
+# print(data) check
 
-
-#call fct
-get_sales_data()
+# --------- update Sales in Gsheet, add new row with the list user input data -----------
+def update_sales_worksheet(data):
     
+    print("updating sales worksheet ... \n")
+    sales_worksheet = SHEET.worksheet("sales")
+    sales_worksheet.append_row(data)
+    print("sales worksheet updated with success ...\n")
+
+data = get_sales_data()
+sales_data = [int(num) for num in data]
+update_sales_worksheet(sales_data)
+
