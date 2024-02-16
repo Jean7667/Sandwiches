@@ -92,3 +92,26 @@ for x in range(0, 101, 5):
 # Print the resulting array
 print(result_array)
 
+#
+""" def validate_data(values):
+    """
+    check format of data
+    converts all strings values into int 
+    raises value erroe if strings cannont be converted
+    """
+    #print(values)
+    try:
+        if len(values) != 6:
+            raise ValueError(  
+                f"Exactly 6 values required, you provided {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+"""
+#e shorthand error python - review
+
+# convert String in Integer
+Array_of_String = ['3','6','6','9','99','56','67','43']
+[int(value) for value in Array_of_String]
+#same as loop
+
