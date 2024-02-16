@@ -24,18 +24,25 @@ print(data)
 
 #fct get sales data from the user
 def get_sales_data():
-    print("please input sales data")
-    print("expected format 6 numbers separated by commas")
-    print("Example: 1,11,22,24,1,21\n")  
-    
-    data_str = input("enter your numbers here: ")
-    
-    #print(f"you gave the following numbers {data_str}")
+    while True:
 
-    sales_data = data_str.split(",")
-    #call fct to check format
-    validate_data(sales_data)
-    #print(sales_data)
+        print("please input sales data from the last market")
+        print("expected format 6 numbers separated by commas")
+        print("Example: 1,11,22,24,1,21\n")  
+        
+        data_str = input("enter your numbers here: ")
+        
+        #print(f"you gave the following numbers {data_str}")
+
+        sales_data = data_str.split(",")
+        #call fct to check format
+        validate_data(sales_data)
+        #print(sales_data)
+
+        if validate_data(sales_data):
+            print ("Data is valid")
+            break
+
 
 def validate_data(values):
     """
@@ -53,6 +60,8 @@ def validate_data(values):
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+        return False
+    return True
 #e shorthand error python - review
 # data type input always a str ''        
 
