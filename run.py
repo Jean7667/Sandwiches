@@ -87,7 +87,12 @@ def calculate_surplus_data(sales_row):
     """
     print("calculating surplus \n")
     stock = SHEET.worksheet("stock").get_all_values()
-    pprint(stock)
+    # pprint(stock) check the values
+    # square brackets with list index of -1
+    # to slice the final item from the list 
+    stock_row = stock[-1]
+    pprint (stock_row)
+    # 2sd option using the len() method to get the length of the list and print the required   
 
 
 def main():
