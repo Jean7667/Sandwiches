@@ -91,9 +91,17 @@ def calculate_surplus_data(sales_row):
     # square brackets with list index of -1
     # to slice the final item from the list 
     stock_row = stock[-1]
-    pprint (stock_row)
+    #pprint (stock_row)
     # 2sd option using the len() method to get the length of the list and print the required   
-
+    #print (f"stock_row:{stock_row}")
+    #print (f"sales_row:{sales_row}")
+    ############## where I left  convert data into int and perform calcul through the list
+    #Using the Python zip() Function for Parallel Iteration
+    surplus_data = []
+    for stock, sales in zip(stock_row, sales_row):
+        surplus = int(stock) - sales
+        surplus_data.append(surplus)
+    print(surplus_data)
 
 def main():
     """
