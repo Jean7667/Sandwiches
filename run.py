@@ -138,11 +138,26 @@ def get_last_5_entries_sales():
     for ind in range(1, 7):
         column = sales.col_values(ind)
         #to get the 5 last lines (slice method)
-        columns.append(column[-5:])
-    
-    print(columns)
+        columns.append(column[-5:]) 
+    return columns
 
+def calculate_stock_data(data):
+    """
+    Calculate the average stock for each item type, adding 10%
+    """
+    print("Calculating stock data...\n")
+    new_stock_data = []
 
+    for column in data:
+        int_column = [int(num) for num in column]
+        #using the length method make possible change in the list (add columns)
+        average = sum(int_column) / len(int_column)
+        #adding 10%
+        stock_num = average * 1.1
+        #round the data
+        new_stock_data.append(round(stock_num))
+    # print (new_stock_data) - to check the output
+    return new_stock_data
 
 def main():
     """
@@ -155,9 +170,12 @@ def main():
     new_surplus_data = calculate_surplus_data(sales_data)
     update_worksheet(new_surplus_data, "surplus")
     #print(new_surplus_data)
-   
-
+    sales_columns = get_last_5_entries_sales()
+    stock_data = calculate_stock_data(sales_columns)
+    #print (stock_data)
+    update_worksheet(stock_data,"stock")
 print("Welcome to Love Sandwiches Data Automation")
-#main()
 
-get_last_5_entries_sales()
+main()
+
+
